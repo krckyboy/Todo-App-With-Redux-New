@@ -1,0 +1,164 @@
+@import "stylesheets/reset"; 
+
+$mainFont: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+$darkest: #575757;
+$dark: #adadad;
+$medium: gainsboro;
+$default: #ebebeb;
+$lightest: #fffefe;
+$theLightest: #ffffff;
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  background-color: $default;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  color: $darkest;
+}
+
+main {
+  max-width: 650px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  
+  & > * {
+    margin: 10px;
+  }
+}
+
+.del {
+  background-color: transparent;
+  border: none;
+  font-size: 1.1rem;
+  color: $dark;
+  cursor: pointer;
+  opacity: 0;
+  transition: .1s all ease;
+  &:hover {
+    font-weight: 500;
+    color: $darkest;
+  }
+}
+
+input {
+  background-color: $dark;
+  color: $lightest;
+  border: none;
+  outline: none;
+  margin-left: 0;
+
+  &::placeholder {
+    color: $lightest;
+  }
+}
+
+button {
+  font: $mainFont;
+  background-color: $darkest;
+  border: 1px solid ;
+  color: $lightest;
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  & > * {
+    margin-right: 5px;
+    padding: 20px;
+    font-size: 1.2rem;
+  } 
+  input {
+    flex: 1;
+  }
+  button {
+    margin-right: none;
+  }
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.todosCont {
+  display: flex;
+  flex-direction: column;
+  list-style-type: decimal;
+  list-style-position: inside;
+  font-size: 1.2rem;
+  font-weight: 400;
+
+  .todo {
+    width: 100%;
+    display: list-item;
+    padding: 5px;
+    box-shadow: $dark 1px 2px;
+    border-radius: 2px;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    padding-right: 60px;
+    position: relative;
+    transition: box-shadow 0.1s ease-in-out, transform .2s ease-in-out;
+    max-width: 650px;
+    word-wrap: break-word;
+
+    .editInput {
+      background-color: transparent;
+      color: $dark;
+      font: $mainFont;
+      letter-spacing: 1px;
+      font-size: 1.2rem;      
+    }
+
+    &:hover .editIcon {
+      opacity: .7;
+    } 
+
+    .editIcon {
+      position: absolute;
+      height: 15px;
+      transition: opacity .1s ease;
+      right: 35px;
+      top: 24%;
+      opacity: 0; // change to 0
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      color: $darkest;
+      transform: scale(1.05);
+    }
+
+    .del {
+      position: absolute;
+      right: 5px;
+      top: 15%;
+      width: 20px;
+      height: 20px;
+      outline: none;
+      &:focus, active {
+        color: $darkest;
+      }
+    }
+
+    &:hover {
+      .del {
+        opacity: 1;
+      }
+    }
+  }
+}
