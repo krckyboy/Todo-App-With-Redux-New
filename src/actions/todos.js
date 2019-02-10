@@ -31,13 +31,6 @@ export function editTodoToggle(id) {
   };
 }
 
-export function handleEditTodoToggle(id, cb) {
-  return dispatch => {
-    dispatch(editTodoToggle(id));
-    cb();
-  };
-}
-
 export function deleteTodoAction(id) {
   return {
     type: DELETE_TODO,

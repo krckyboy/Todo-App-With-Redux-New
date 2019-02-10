@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { editTodoToggle, handleEditTodoToggle } from "../actions/todos";
+import { editTodoToggle } from "../actions/todos";
 
 class Todo extends Component {
   showEditInput = (e, id) => {
     const { dispatch } = this.props;
     if (e.target.className === "editIcon") {
-      dispatch(
-        handleEditTodoToggle(
-          id,
-          () => console.log(this.input) || this.input.focus() // this.input returns undefined
-        )
-      );
+      dispatch(editTodoToggle(id));
     }
   };
 
@@ -48,7 +43,7 @@ class Todo extends Component {
       return (
         <li className="todo">
           <input
-            autoFocus // This temporarily solves the problem.
+            autoFocus // This temporarily solves the problem with this.input.focus()
             type="text"
             className="editInput"
             defaultValue={text}
