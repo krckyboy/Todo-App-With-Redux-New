@@ -22,8 +22,9 @@ class Todos extends Component {
     const { dispatch } = this.props;
     dispatch(deleteTodoAction(id));
   };
-  editTodo = () => {
+  updateTodo = todo => {
     const { dispatch } = this.props;
+    dispatch(updateTodoAction(todo));
   };
 
   render() {
@@ -51,6 +52,7 @@ class Todos extends Component {
         key={todo.id}
         toggleTodo={this.toggleTodo}
         deleteTodo={this.deleteTodo}
+        updateTodo={this.updateTodo}
       />
     ));
 

@@ -3,7 +3,6 @@ export const ADD_TODO = "ADD_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 export const TOGGLE_TODO = "TOGGLE_TODO";
 export const UPDATE_TODO = "UPDATE_TODO";
-export const TOGGLE_EDIT = "TOGGLE_EDIT";
 
 export function addTodoAction(todo) {
   return {
@@ -17,17 +16,9 @@ export function handleAddTodoAction(text) {
     const newTodo = {
       completed: false,
       id: generateId(),
-      editable: false,
       text
     };
     dispatch(addTodoAction(newTodo));
-  };
-}
-
-export function editTodoToggle(id) {
-  return {
-    type: TOGGLE_EDIT,
-    id
   };
 }
 
@@ -51,3 +42,5 @@ export function updateTodoAction(todo) {
     todo
   };
 }
+
+export function handleUpdateTodoAction() {}

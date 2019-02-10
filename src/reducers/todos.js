@@ -21,7 +21,9 @@ export function todos(state = [], action) {
         todo.id !== action.id ? todo : { ...todo, editable: !todo.editable }
       );
     case UPDATE_TODO:
-      return {};
+      return state.map(todo =>
+        todo.id !== action.todo.id ? todo : { ...todo, text: action.todo.text }
+      );
     default:
       return state;
   }
