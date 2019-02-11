@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { handleUpdateTodo } from "../actions/todos";
 
 class Todo extends Component {
   state = {
@@ -9,25 +8,13 @@ class Todo extends Component {
     toggleable: true
   };
 
-  componentDidMount() {
-    document.addEventListener("click", e => {
-      if (
-        this.state.editable &&
-        e.target.className !== "editIcon" &&
-        e.target.className !== "editInput"
-      ) {
-        this.doneEditing();
-      }
-    });
-  }
-
   updateText = e => {
     const text = e.target.value;
     this.setState({ textToUpdate: text });
   };
 
   updateTodo = (e, id) => {
-    const { dispatch, todo, updateTodo } = this.props;
+    const { todo, updateTodo } = this.props;
     const { textToUpdate } = this.state;
     // User presses enter
     if (e.which === 13) {
@@ -36,18 +23,15 @@ class Todo extends Component {
         this.doneEditing();
         return;
       } else {
-        // UPDATE THE TODO and then func below
         updateTodo({ ...todo, text: textToUpdate });
         this.doneEditing();
       }
-      // handle update todo (passed from Todos)
     }
     // User presses escape
     if (e.which === 27) {
       this.doneEditing();
       return;
     }
-    // user clicks elsewhere -> editable: false
   };
 
   toggleableOn = () => this.setState({ toggleable: true });
@@ -85,12 +69,12 @@ class Todo extends Component {
       return (
         <li className="todo" style={{ paddingRight: "0" }}>
           <input
-            autoFocus // This temporarily solves the problem with this.input.focus()
+            autoFocus
             type="text"
             className="editInput"
             defaultValue={text}
+            onBlur={this.doneEditing}
             onChange={this.updateText}
-            ref={input => (this.input = input)}
             onKeyDown={e => this.updateTodo(e, id)}
           />
         </li>

@@ -87,6 +87,7 @@ button {
 
 .completed {
   text-decoration: line-through;
+  color: $dark;
 }
 
 .todosCont {
@@ -161,5 +162,27 @@ button {
         opacity: 1;
       }
     }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form > * {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .todosCont{
+    .todo {
+      font-size: 10px;
+      .editIcon {
+        height: 10px;
+        top: 38%;
+      }
+    }
+  }
+
+
+  .del {
+    font-size: 10px;
   }
 }

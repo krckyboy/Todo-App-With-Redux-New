@@ -14,14 +14,17 @@ class Todos extends Component {
     const { dispatch } = this.props;
     dispatch(handleAddTodoAction(text));
   };
+
   toggleTodo = id => {
     const { dispatch } = this.props;
     dispatch(toggleTodoAction(id));
   };
+
   deleteTodo = id => {
     const { dispatch } = this.props;
     dispatch(deleteTodoAction(id));
   };
+
   updateTodo = todo => {
     const { dispatch } = this.props;
     dispatch(updateTodoAction(todo));
@@ -29,22 +32,6 @@ class Todos extends Component {
 
   render() {
     const { todos } = this.props;
-
-    // For styles:
-    // const todos = [
-    //   { text: "My first todo", id: "1", completed: false },
-    //   { text: "My second todo", id: "2", completed: false },
-    //   { text: "My third todo", id: "3", completed: false },
-    //   { text: "My fourth todo", id: "4", completed: false },
-    //   {
-    //     text:
-    //       "My fifth amazing todo My fifth amazing todo My fifth amazing todo ",
-    //     id: "5",
-    //     completed: false
-    //   },
-    //   { text: "Learn this", id: "6", completed: false },
-    //   { text: "Learn that", id: "7", completed: false }
-    // ];
 
     const todosComponents = todos.map(todo => (
       <Todo

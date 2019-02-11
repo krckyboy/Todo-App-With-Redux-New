@@ -43,4 +43,10 @@ export function updateTodoAction(todo) {
   };
 }
 
-export function handleUpdateTodoAction() {}
+// 1. User starts editing a todo
+// Set redux state to EDITING (it would be a global editing flag / state)
+// Pass the function for STOP EDITING for that component to be invoked in step 2
+// 2. User starts editing another todo
+// Global state is already set to editing, so if that's the case,
+// run the function for STOP EDITING for the todo in the step 1,
+// which is stored in the Redux store

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Form extends Component {
   componentDidMount() {
-    // Commented because of the functionality being annoying in dev mode.
+    // Comment in dev mode because it's annoying
     // this.input.focus();
   }
 
